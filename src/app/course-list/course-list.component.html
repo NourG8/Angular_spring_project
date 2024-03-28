@@ -1,0 +1,76 @@
+<div class="text-center" style="padding: 0 0;">
+  <div class="header bg-gradient-danger pb-9">
+    <div class="container-fluid">
+      <!-- <h1 class="display-2 text-white">Cours</h1> -->
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Cours List</h3>
+            </div>
+            <div class="table-responsive pr-6 pl-6">
+              <input class="form-control" type="text" placeholder="Search" [(ngModel)]="searchText">
+              <button routerLink="/couradd" type="button" class="btn btn-success mt-3 mb-4 float-right">Create</button>
+              <table class="table align-items-center table-flush table-center">
+                <thead class="thead-light">
+                  <tr >
+                    <th scope="col">NAME</th>
+                    <th scope="col">DETAILS</th>
+                    <th scope="col" style="text-align: center;">COURSE FILE</th>
+                    <th scope="col" style="text-align: center;">ADDED AT</th>
+                    <th scope="col" style="text-align: center;">OPTIONS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let course of cour | slice: (currentPage-1)*pageSize : currentPage*pageSize | search: searchText">
+                    <td>{{ course.nomCour }}</td>
+                    <td>{{ course.detailsCour }}</td>
+                    <td>
+                      <button *ngIf="course.courfile" class="btn" style="background-color: rgb(207, 205, 205); color: white;" href="{{ course.courfile }}"  (click)="downloadFile(course.courfile)" download>
+                        <i class="fa fa-download"></i>
+                        file download
+                      </button>
+                      <span *ngIf="!course.courfile">No file available</span>
+                    </td>
+                    <td><p>{{ course.addedAt?.toLocaleString({ 
+                        day: 'numeric', 
+                        month: '1-digit', 
+                        year: 'numeric', 
+                        hour: '1-digit', 
+                        minute: '1-digit', 
+                        hour12: false  }).slice(0, -13) ?? 'Not Available' }}</p></td>
+                    <td>
+                      <button (click)="deleteCourse(course.idCours)" type="button" class="btn btn-danger">Delete</button>
+                      <button (click)="updateCour(course.idCours)" type="button" class="btn btn-info">update</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex justify-content-center my-5">
+                <ul class="pagination">
+                  <li class="page-item" [class.disabled]="currentPage === 1">
+                    <button class="page-link" (click)="previousPage()" aria-label="Previous" [class.disabled]="currentPage === 1">
+                      <i class="fa fa-chevron-circle-left text-primary" ></i>
+                    </button>
+                  </li>
+                  <li class="page-item " *ngFor="let page of totalPages" [class.active]="page === currentPage">
+                    <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+                  </li>
+                  <li class="page-item " [class.disabled]="currentPage === totalPages">
+                    <button class="page-link" (click)="nextPage()" aria-label="Next" [class.disabled]="currentPage === totalPages">
+                      <i class="fa fa-chevron-circle-right text-primary"></i>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

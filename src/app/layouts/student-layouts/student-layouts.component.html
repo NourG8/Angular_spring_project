@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Classroom - Cours pour Étudiant</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4285f4;
+        }
+
+        .course {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Classroom</h1>
+    </header>
+
+    <main>
+        <h2>Cours</h2>
+
+        <div class="course" *ngFor="let course of courses">
+            <h3>{{ course.nomCour }}</h3>
+            <p>{{ course.detailsCour  }}</p>
+            <button (click)="downloadCour(course.courfile)" >{{ course.courfile  }}</button>
+        </div>
+
+
+
+
+
+    </main>
+
+    <footer>
+        <p>© 2024 Google Classroom</p>
+    </footer>
+
+</body>
+</html>

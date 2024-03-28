@@ -1,0 +1,33 @@
+<div class="header bg-gradient-danger pb-8">
+</div>
+<div class="container-fluid">
+  <div class="header-body">
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="card-title">Add a course</h2>
+            <form (ngSubmit)="onSubmit()" class="form">
+              <div class="form-group">
+                <label for="nomCour">Name</label>
+                <input type="text" class="form-control" id="nomCour" [(ngModel)]="cour.nomCour" name="nomCour">
+              </div>
+              <div class="form-group">
+                <label for="detailsCour">Détails </label>
+                <input type="text" class="form-control" id="detailsCour" [(ngModel)]="cour.detailsCour" name="detailsCour">
+              </div>
+              <div class="form-group">
+                <label for="files">Course files</label>
+                <input type="file" class="form-control-file" (change)="onFileChange($event)" name="files" multiple>
+              </div>
+              <div class="col-sm-5">
+                <img *ngIf="cour.courfile" [src]="cour.courfile" alt="Selected file" height="100" width="120">
+              </div>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="header bg-gradient-danger pb-8">
+</div>
+<div class="container-fluid">
+  <div class="header-body">
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+        <div class="card-header">
+          <h2 class="card-title">Update Course</h2>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" #updateForm="ngForm" class="needs-validation" novalidate>
+            <div class="form-group">
+              <label for="nomCour">Course Name:</label>
+              <input type="text" class="form-control" id="nomCour" name="nomClass" [(ngModel)]="cour.nomCour" required>
+              <div class="invalid-feedback">
+                Please enter a course name.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="detailsCour">Course Details:</label>
+              <input type="text" class="form-control" id="detailsCour" name="detailsCour" [(ngModel)]="cour.detailsCour" required>
+              <div class="invalid-feedback">
+                Please enter course details.
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <label for="files">Course File:</label>
+                <input type="file" class="form-control-file" name="files" multiple (change)="onFileChange($event)">
+                <div class="col-sm-5">
+                  <img *ngIf="cour.courfile" [src]="cour.courfile" alt="Selected file" height="100" width="120">
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

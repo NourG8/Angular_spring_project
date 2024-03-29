@@ -23,16 +23,13 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCour();
-    this.courService.getAllCourses().subscribe(data =>{
-      this.totalCourses =data.length;
-    })
   }
 
-  private getCour(){
-    this.courService.getAllCourses().subscribe(data =>{
-      this.cour =data;
-    })
-
+  private getCour(): void {
+    this.courService.getAllCourses().subscribe(data => {
+      this.cour = data;
+      this.totalCourses = data ? data.length : 0;
+    });
   }
 
   // @Output() courseDeleted = new EventEmitter<void>();

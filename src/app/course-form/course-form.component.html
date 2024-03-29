@@ -21,9 +21,12 @@
                 <input type="file" class="form-control-file" (change)="onFileChange($event)" name="files" multiple>
               </div>
               <div class="col-sm-5">
-                <img *ngIf="cour.courfile" [src]="cour.courfile" alt="Selected file" height="100" width="120">
+                <img *ngIf="courfileType === 'image'" [src]="cour.courfile" alt="Selected file" height="100" width="120">
+                <i *ngIf="courfileType === 'pdf'" class="fas fa-file-pdf fa-6x"></i>
+                <i *ngIf="courfileType === 'word'" class="fas fa-file-word fa-6x"></i>
+                <i *ngIf="courfileType === 'unknown'" class="fas fa-file fa-6x"></i>
               </div>
-              <button type="submit" class="btn btn-primary">Add</button>
+              <button type="submit" class="btn btn-primary mt-6" [disabled]="!canSubmit">Add</button>
             </form>
           </div>
         </div>

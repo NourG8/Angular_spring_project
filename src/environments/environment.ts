@@ -9,13 +9,30 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyBQot5-XdukOF7mEFL1lrSDCzaSS1h0HHA",
-    authDomain: "angular-cf2ef.firebaseapp.com",
-    projectId: "angular-cf2ef",
-    storageBucket: "angular-cf2ef.appspot.com",
-    messagingSenderId: "272217336146",
-    appId: "1:272217336146:web:9d3a484fa428850596728b",
-    measurementId: "G-0M2QBES6EM"
+
+  apiKey: "AIzaSyAMcDz812krB8lImvP1sWTGsslFJ8nX20w",
+  authDomain: "test-project-a4643.firebaseapp.com",
+  projectId: "test-project-a4643",
+  storageBucket: "test-project-a4643.appspot.com",
+  messagingSenderId: "1007402231696",
+  appId: "1:1007402231696:web:d3e44057633ffb19b47515",
+  measurementId: "G-B7TNJ89XXK"
+    // apiKey: "AIzaSyBQot5-XdukOF7mEFL1lrSDCzaSS1h0HHA",
+    // authDomain: "angular-cf2ef.firebaseapp.com",
+    // projectId: "angular-cf2ef",
+    // storageBucket: "angular-cf2ef.appspot.com",
+    // messagingSenderId: "272217336146",
+    // appId: "1:272217336146:web:9d3a484fa428850596728b",
+    // measurementId: "G-0M2QBES6EM"
+
+    // apiKey: "AIzaSyCXlT5NqUkiywKK3Xb6HvhVr5qKUHoJ_-A",
+    // authDomain: "corzelo-74658.firebaseapp.com",  
+    // projectId: "corzelo-74658",
+    // storageBucket: "corzelo-74658.appspot.com",
+    // messagingSenderId: "886775771901",
+    // appId: "1:886775771901:web:20d71a9bc01b87dada8494",
+    // measurementId: "G-W0QL0YJG76"
+  
   }
 };
 

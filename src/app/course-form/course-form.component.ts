@@ -18,6 +18,9 @@ export class CourseFormComponent implements OnInit {
   selectedFile: File | null = null;
   nomCour: any;
   detailsCour: any;
+  courfileType: string;
+
+  // canSubmit: boolean = false;
 
   constructor(private fireStorage: AngularFireStorage, private router: Router,
      private courService: CourService) { }
@@ -41,14 +44,30 @@ export class CourseFormComponent implements OnInit {
     );
   }
 
+  get canSubmit(): boolean {
+    return !!this.cour.nomCour && !!this.cour.detailsCour && !!this.cour.courfile;
+  }
   async onFileChange(event: any): Promise<void> {
     const file = event.target.files[0];
     if (file) {
+      if (file.type.startsWith('image/')) {
+        this.courfileType = 'image';
+      } else if (file.type.startsWith('application/pdf')) {
+        this.courfileType = 'pdf';
+      } else if (file.type.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+        this.courfileType = 'word';
+      } else {
+        this.courfileType = 'unknown';
+      }
+      // this.courfile = file.type;
+      // console.log(this.courfile);
+      
       const path = `test/${file.name}`;
       const uploadTask = await this.fireStorage.upload(path, file);
       const url = await uploadTask.ref.getDownloadURL();
       this.cour.courfile = url;
-      console.log('File URL:', this.cour.courfile);
+      // console.log('File URL test :', this.cour);
+      // this.checkCanSubmit()
       // await this.onSubmit()  
     }
   }
